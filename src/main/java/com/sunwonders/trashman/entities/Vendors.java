@@ -181,4 +181,17 @@ public class Vendors {
 		this.products = products;
 	}
 
+	public Vendors(String id, Location location, String vendorName, String phoneNumber, String emailId, String userName,
+			String password, List<Products> products) {
+		super();
+		this.id = id;
+		this.location = location;
+		this.vendorName = vendorName;
+		this.phoneNumber = phoneNumber;
+		this.emailId = emailId;
+		this.userName = userName;
+		this.password = password;
+		this.products = products;
+	}
+
 }

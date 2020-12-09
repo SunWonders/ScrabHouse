@@ -1,5 +1,8 @@
 package com.sunwonders.trashman.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class ResponseModel.
@@ -8,11 +11,22 @@ public class ResponseModel {
 
 	/** The status code. */
 	private Integer statusCode;
-	
+
 	/** The status message. */
 	private String statusMessage;
-	
+
+	private Object data;
+
+	public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
+	}
+
 	/** The saved id. */
+	@JsonInclude(Include.NON_NULL)
 	private String savedId;
 
 	/**
@@ -68,5 +82,5 @@ public class ResponseModel {
 	public void setSavedId(String savedId) {
 		this.savedId = savedId;
 	}
-	
+
 }

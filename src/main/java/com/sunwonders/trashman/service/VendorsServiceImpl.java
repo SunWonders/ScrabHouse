@@ -4,6 +4,7 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Metrics;
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import org.springframework.data.mongodb.core.query.NearQuery;
 import org.springframework.stereotype.Service;
 
+import com.sunwonders.trashman.dto.ProductUpdateRequest;
 import com.sunwonders.trashman.entities.Vendors;
 import com.sunwonders.trashman.repo.VendorsRepo;
 
@@ -49,8 +51,8 @@ public class VendorsServiceImpl implements VendorsService {
 	 * Gets the vendors by location.
 	 *
 	 * @param longitude the longitude
-	 * @param latitude the latitude
-	 * @param distance the distance
+	 * @param latitude  the latitude
+	 * @param distance  the distance
 	 * @return the vendors by location
 	 */
 	@Override
@@ -66,6 +68,32 @@ public class VendorsServiceImpl implements VendorsService {
 		TypedAggregation<Vendors> agg = newAggregation(Vendors.class, list);
 		result = mongoOperations.aggregate(agg, Vendors.class).getMappedResults();
 		return result;
+	}
+
+	@Override
+	public String updateVendorProducts(ProductUpdateRequest productUpdateRequest) {
+		// TODO Auto-generated method stub
+		Optional<Vendors> vendorDetails = vendorsRepo.findById(productUpdateRequest.getId());
+		if (vendorDetails.isPresent()) {
+			Vendors vendor = vendorDetails.get();
+			vendor.setProducts(productUpdateRequest.getProducts());
+			return vendorsRepo.save(vendor).getId();
+		} else {
+			return null;
+		}
+
+	}
+
+	@Override
+	public Vendors getVendorById(String vendorId) {
+		// TODO Auto-generated method stub
+		Optional<Vendors> vendorDetails = vendorsRepo.findById(vendorId);
+		if (vendorDetails.isPresent()) {
+			return vendorDetails.get();
+		} else {
+			return null;
+		}
+
 	}
 
 }

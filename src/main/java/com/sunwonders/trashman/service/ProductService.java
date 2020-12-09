@@ -1,5 +1,7 @@
 package com.sunwonders.trashman.service;
 
+import java.util.List;
+
 import com.sunwonders.trashman.entities.Products;
 
 // TODO: Auto-generated Javadoc
@@ -15,4 +17,6 @@ public interface ProductService {
 	 * @return the string
 	 */
 	public String saveProduct(Products product);
+	
+	public List<Products> getAllProducts();
 }

@@ -2,6 +2,7 @@ package com.sunwonders.trashman.service;
 
 import java.util.List;
 
+import com.sunwonders.trashman.dto.ProductUpdateRequest;
 import com.sunwonders.trashman.entities.Vendors;
 
 // TODO: Auto-generated Javadoc
@@ -22,9 +23,13 @@ public interface VendorsService {
 	 * Gets the vendors by location.
 	 *
 	 * @param longitude the longitude
-	 * @param latitude the latitude
-	 * @param distance the distance
+	 * @param latitude  the latitude
+	 * @param distance  the distance
 	 * @return the vendors by location
 	 */
 	public List<Vendors> getVendorsByLocation(double longitude, double latitude, double distance);
+
+	String updateVendorProducts(ProductUpdateRequest productUpdateRequest);
+	
+	Vendors getVendorById(String vendorId);
 }
