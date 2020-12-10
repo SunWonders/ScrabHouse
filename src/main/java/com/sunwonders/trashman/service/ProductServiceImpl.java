@@ -31,6 +31,11 @@ public class ProductServiceImpl implements ProductService {
 		return productsRepo.save(product).getId();
 	}
 
+	/**
+	 * Gets the all products.
+	 *
+	 * @return the all products
+	 */
 	@Override
 	public List<Products> getAllProducts() {
 		// TODO Auto-generated method stub

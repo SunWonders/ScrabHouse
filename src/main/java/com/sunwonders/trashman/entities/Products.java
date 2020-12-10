@@ -21,7 +21,7 @@ public class Products {
 	private String productUrl;
 
 	/** The type of unit. */
-	private Integer typeOfUnit;
+	private String typeOfUnit;
 
 	/** The amount. */
 	private Float amount;
@@ -31,7 +31,7 @@ public class Products {
 	 *
 	 * @return the type of unit
 	 */
-	public Integer getTypeOfUnit() {
+	public String getTypeOfUnit() {
 		return typeOfUnit;
 	}
 
@@ -40,7 +40,7 @@ public class Products {
 	 *
 	 * @param typeOfUnit the new type of unit
 	 */
-	public void setTypeOfUnit(Integer typeOfUnit) {
+	public void setTypeOfUnit(String typeOfUnit) {
 		this.typeOfUnit = typeOfUnit;
 	}
 

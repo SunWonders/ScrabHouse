@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Vendors.
@@ -29,9 +32,11 @@ public class Vendors {
 	private String emailId;
 
 	/** The user name. */
+	@JsonInclude(Include.NON_NULL)
 	private String userName;
 
 	/** The password. */
+	@JsonInclude(Include.NON_NULL)
 	private String password;
 
 	/** The products. */
@@ -181,6 +186,18 @@ public class Vendors {
 		this.products = products;
 	}
 
+	/**
+	 * Instantiates a new vendors.
+	 *
+	 * @param id the id
+	 * @param location the location
+	 * @param vendorName the vendor name
+	 * @param phoneNumber the phone number
+	 * @param emailId the email id
+	 * @param userName the user name
+	 * @param password the password
+	 * @param products the products
+	 */
 	public Vendors(String id, Location location, String vendorName, String phoneNumber, String emailId, String userName,
 			String password, List<Products> products) {
 		super();

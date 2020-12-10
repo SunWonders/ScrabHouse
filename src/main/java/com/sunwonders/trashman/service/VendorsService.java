@@ -29,7 +29,19 @@ public interface VendorsService {
 	 */
 	public List<Vendors> getVendorsByLocation(double longitude, double latitude, double distance);
 
+	/**
+	 * Update vendor products.
+	 *
+	 * @param productUpdateRequest the product update request
+	 * @return the string
+	 */
 	String updateVendorProducts(ProductUpdateRequest productUpdateRequest);
 	
+	/**
+	 * Gets the vendor by id.
+	 *
+	 * @param vendorId the vendor id
+	 * @return the vendor by id
+	 */
 	Vendors getVendorById(String vendorId);
 }

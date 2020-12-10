@@ -58,6 +58,11 @@ public class ProductsController {
 
 	}
 	
+	/**
+	 * Gets the all products.
+	 *
+	 * @return the all products
+	 */
 	@GetMapping(value = "/getAllProducts")
 	public ResponseEntity<ResponseModel> getAllProducts() {
 		List<Products> result = new ArrayList<>();

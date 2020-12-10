@@ -27,4 +27,8 @@ public class CommonStatusCodes {
 	public static Integer USER_ALREADY_EXIST_STATUS_CODE = 2001;
 
 	public static String SUCCESS_NO_DATA_MESSAGE = "No Data";
+	
+	public static String UNAUTHORIZED_MESSAGE = "UnAuthrorized";
+	
+	public static Integer UNAUTHORIZED_STATUS = 401;
 }

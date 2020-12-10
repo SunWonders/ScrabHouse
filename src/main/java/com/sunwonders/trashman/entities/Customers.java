@@ -3,13 +3,16 @@ package com.sunwonders.trashman.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Customers.
  */
 @Document
 public class Customers {
-	
+
 	/** The id. */
 	@Id
 	private String id;
@@ -19,10 +22,10 @@ public class Customers {
 
 	/** The first name. */
 	private String firstName;
-	
+
 	/** The last name. */
 	private String lastName;
-	
+
 	/** The middle name. */
 	private String middleName;
 
@@ -33,9 +36,11 @@ public class Customers {
 	private String emailId;
 
 	/** The user name. */
+	@JsonInclude(Include.NON_NULL)
 	private String userName;
 
 	/** The password. */
+	@JsonInclude(Include.NON_NULL)
 	private String password;
 
 	/**
@@ -200,7 +205,4 @@ public class Customers {
 		this.password = password;
 	}
 
-	
-
-	
 }

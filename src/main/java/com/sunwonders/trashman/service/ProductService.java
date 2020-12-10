@@ -18,5 +18,10 @@ public interface ProductService {
 	 */
 	public String saveProduct(Products product);
 	
+	/**
+	 * Gets the all products.
+	 *
+	 * @return the all products
+	 */
 	public List<Products> getAllProducts();
 }

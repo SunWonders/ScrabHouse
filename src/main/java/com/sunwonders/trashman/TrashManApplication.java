@@ -1,6 +1,7 @@
 package com.sunwonders.trashman;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // TODO: Auto-generated Javadoc
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * The Class TrashManApplication.
  */
 @SpringBootApplication
+@EnableAutoConfiguration
 public class TrashManApplication {
 
 	/**

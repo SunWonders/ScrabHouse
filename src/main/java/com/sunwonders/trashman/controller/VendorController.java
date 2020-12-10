@@ -76,6 +76,14 @@ public class VendorController {
 		return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
 	}
 
+	/**
+	 * Gets the vendors by distance.
+	 *
+	 * @param longitude the longitude
+	 * @param latitude the latitude
+	 * @param distance the distance
+	 * @return the vendors by distance
+	 */
 	@GetMapping(value = "/getVendorsByDistance")
 	public ResponseEntity<ResponseModel> getVendorsByDistance(@RequestParam double longitude,
 			@RequestParam double latitude, @RequestParam double distance) {
@@ -100,6 +108,12 @@ public class VendorController {
 
 	}
 
+	/**
+	 * Vendor products update.
+	 *
+	 * @param productUpdateRequest the product update request
+	 * @return the response entity
+	 */
 	@PostMapping(path = "/products/update", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<ResponseModel> vendorProductsUpdate(
 			@RequestBody final ProductUpdateRequest productUpdateRequest) {
@@ -123,6 +137,12 @@ public class VendorController {
 
 	}
 
+	/**
+	 * Gets the vendors by id.
+	 *
+	 * @param id the id
+	 * @return the vendors by id
+	 */
 	@GetMapping(value = "/getVendorsById")
 	public ResponseEntity<ResponseModel> getVendorsById(@RequestParam String id) {
 		Vendors result = null;

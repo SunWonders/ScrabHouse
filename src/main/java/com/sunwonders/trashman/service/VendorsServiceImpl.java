@@ -14,10 +14,13 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
 import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import org.springframework.data.mongodb.core.query.NearQuery;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sunwonders.trashman.dto.ProductUpdateRequest;
+import com.sunwonders.trashman.entities.Users;
 import com.sunwonders.trashman.entities.Vendors;
+import com.sunwonders.trashman.repo.UsersRepository;
 import com.sunwonders.trashman.repo.VendorsRepo;
 
 // TODO: Auto-generated Javadoc
@@ -35,6 +38,10 @@ public class VendorsServiceImpl implements VendorsService {
 	@Autowired
 	private MongoOperations mongoOperations;
 
+	/** The users repository. */
+	@Autowired
+	private UsersRepository usersRepository;
+
 	/**
 	 * Save vendor.
 	 *
@@ -44,6 +51,7 @@ public class VendorsServiceImpl implements VendorsService {
 	@Override
 	public String saveVendor(Vendors vendor) {
 		// TODO Auto-generated method stub
+		saveUserForAuthentication(vendor);
 		return vendorsRepo.save(vendor).getId();
 	}
 
@@ -70,6 +78,12 @@ public class VendorsServiceImpl implements VendorsService {
 		return result;
 	}
 
+	/**
+	 * Update vendor products.
+	 *
+	 * @param productUpdateRequest the product update request
+	 * @return the string
+	 */
 	@Override
 	public String updateVendorProducts(ProductUpdateRequest productUpdateRequest) {
 		// TODO Auto-generated method stub
@@ -84,6 +98,12 @@ public class VendorsServiceImpl implements VendorsService {
 
 	}
 
+	/**
+	 * Gets the vendor by id.
+	 *
+	 * @param vendorId the vendor id
+	 * @return the vendor by id
+	 */
 	@Override
 	public Vendors getVendorById(String vendorId) {
 		// TODO Auto-generated method stub
@@ -94,6 +114,29 @@ public class VendorsServiceImpl implements VendorsService {
 			return null;
 		}
 
+	}
+
+	/**
+	 * Save user for authentication.
+	 *
+	 * @param vendor the vendor
+	 */
+	private void saveUserForAuthentication(Vendors vendor) {
+		if (vendor.getId() == null && vendor.getUserName() != null && vendor.getPassword() != null) {
+			Users usersData = usersRepository.findByUsername(vendor.getUserName());
+			if (usersData == null) {
+				Users users = new Users();
+				users.setPassword(new BCryptPasswordEncoder().encode(vendor.getPassword()));
+				users.setUsername(vendor.getUserName());
+				users.setIsEnabled(true);
+				users.setTypeOfUser("CUSTOMER");
+				users.setIsVerified(true);
+				usersRepository.save(users);
+			}
+			
+		}
+		vendor.setUserName(null);
+		vendor.setPassword(null);
 	}
 
 }
