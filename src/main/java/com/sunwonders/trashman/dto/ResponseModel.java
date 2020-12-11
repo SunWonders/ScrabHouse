@@ -18,6 +18,27 @@ public class ResponseModel {
 	/** The data. */
 	@JsonInclude(Include.NON_NULL)
 	private Object data;
+	
+	@JsonInclude(Include.NON_NULL)
+	private Boolean isVendor;
+	@JsonInclude(Include.NON_NULL)
+	private Boolean isCustomer;
+
+	public Boolean getIsVendor() {
+		return isVendor;
+	}
+
+	public void setIsVendor(Boolean isVendor) {
+		this.isVendor = isVendor;
+	}
+
+	public Boolean getIsCustomer() {
+		return isCustomer;
+	}
+
+	public void setIsCustomer(Boolean isCustomer) {
+		this.isCustomer = isCustomer;
+	}
 
 	/**
 	 * Gets the data.

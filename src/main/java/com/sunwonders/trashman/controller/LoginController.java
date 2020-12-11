@@ -37,6 +37,12 @@ public class LoginController {
 			} else {
 				boolean status = new BCryptPasswordEncoder().matches(loginRequest.getPassword(), user.getPassword());
 				if (status) {
+					if (user.getTypeOfUser() != null && user.getTypeOfUser().equals("CUSTOMER")) {
+						userResponseModel.setIsCustomer(true);
+					}
+					if (user.getTypeOfUser() != null && user.getTypeOfUser().equals("VENDOR")) {
+						userResponseModel.setIsVendor(true);
+					}
 					userResponseModel.setStatusMessage(CommonStatusCodes.SUCCESS_MESSAGE);
 					userResponseModel.setStatusCode(CommonStatusCodes.SUCCESS);
 					return new ResponseEntity<>(userResponseModel, HttpStatus.OK);
