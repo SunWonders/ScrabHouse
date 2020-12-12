@@ -43,6 +43,9 @@ public class LoginController {
 					if (user.getTypeOfUser() != null && user.getTypeOfUser().equals("VENDOR")) {
 						userResponseModel.setIsVendor(true);
 					}
+					if (user.getTypeOfUser() != null) {
+						userResponseModel.setData(user);
+					}
 					userResponseModel.setStatusMessage(CommonStatusCodes.SUCCESS_MESSAGE);
 					userResponseModel.setStatusCode(CommonStatusCodes.SUCCESS);
 					return new ResponseEntity<>(userResponseModel, HttpStatus.OK);

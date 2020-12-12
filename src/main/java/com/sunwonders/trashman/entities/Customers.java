@@ -1,8 +1,11 @@
 package com.sunwonders.trashman.entities;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -42,6 +45,27 @@ public class Customers {
 	/** The password. */
 	@JsonInclude(Include.NON_NULL)
 	private String password;
+
+	@JsonIgnore
+	private Date insertedDateTime;
+	@JsonIgnore
+	private Date updatedDateTime;
+
+	public Date getInsertedDateTime() {
+		return insertedDateTime;
+	}
+
+	public void setInsertedDateTime(Date insertedDateTime) {
+		this.insertedDateTime = insertedDateTime;
+	}
+
+	public Date getUpdatedDateTime() {
+		return updatedDateTime;
+	}
+
+	public void setUpdatedDateTime(Date updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
+	}
 
 	/**
 	 * Gets the id.

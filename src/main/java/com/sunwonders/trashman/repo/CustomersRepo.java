@@ -7,6 +7,8 @@ import com.sunwonders.trashman.entities.Customers;
 /**
  * The Interface CustomersRepo.
  */
-public interface CustomersRepo extends CrudRepository<Customers, String>{
+public interface CustomersRepo extends CrudRepository<Customers, String> {
+	Customers findByEmailIdOrPhoneNumber(String emailId, String phoneNumber);
 
+	Customers findByUserName(String userName);
 }

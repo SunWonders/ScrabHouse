@@ -1,5 +1,9 @@
 package com.sunwonders.trashman.service;
 
+import java.util.Date;
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,6 +28,9 @@ public class CustomersServiceImpl implements CustomersService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	@Autowired
+	private ModelMapper modelMapper;
+
 	/**
 	 * Save customer.
 	 *
@@ -32,8 +39,23 @@ public class CustomersServiceImpl implements CustomersService {
 	 */
 	@Override
 	public String saveCustomer(Customers customer) {
-		saveUserForAuthentication(customer);
-		return customersRepo.save(customer).getId();
+		if ((customer.getUserName() != null && !customer.getUserName().isEmpty())
+				&& ((customer.getEmailId() != null && !customer.getEmailId().isEmpty())
+						|| (customer.getPhoneNumber() != null && !customer.getPhoneNumber().isEmpty()))) {
+			saveUserForAuthentication(customer);
+			Customers customersDbObj = customersRepo.findByUserName(customer.getUserName());
+			if (customersDbObj != null) {
+				customer.setId(customersDbObj.getId());
+				customer.setInsertedDateTime(customersDbObj.getInsertedDateTime());
+				modelMapper.map(customer, customersDbObj);
+				customer.setUpdatedDateTime(new Date());
+			} else {
+				customer.setInsertedDateTime(new Date());
+			}
+			return customersRepo.save(customer).getId();
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -54,8 +76,19 @@ public class CustomersServiceImpl implements CustomersService {
 				usersRepository.save(users);
 			}
 		}
-		customer.setUserName(null);
+		// customer.setUserName(null);
 		customer.setPassword(null);
+	}
+
+	@Override
+	public Customers getCustomerById(String id) {
+		// TODO Auto-generated method stub
+		Optional<Customers> customerData = customersRepo.findById(id);
+		if (customerData.isPresent()) {
+			return customerData.get();
+		} else {
+			return null;
+		}
 	}
 
 }

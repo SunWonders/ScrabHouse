@@ -15,4 +15,6 @@ public interface CustomersService {
  	 * @return the string
  	 */
  	String saveCustomer(Customers customer);
+
+	Customers getCustomerById(String id);
 }

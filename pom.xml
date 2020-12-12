@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.sunwonders.trashman</groupId>
 	<artifactId>TrashMan</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<name>TrashMan</name>
 	<description>TrashMan</description>
 
@@ -48,6 +48,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.5</version>
 		</dependency>
 	</dependencies>
 

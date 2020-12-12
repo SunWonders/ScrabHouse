@@ -1,12 +1,16 @@
 package com.sunwonders.trashman.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -14,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 @Document
 public class Vendors {
-	
+
 	/** The id. */
 	@Id
 	private String id;
@@ -33,6 +37,7 @@ public class Vendors {
 
 	/** The user name. */
 	@JsonInclude(Include.NON_NULL)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private String userName;
 
 	/** The password. */
@@ -41,6 +46,26 @@ public class Vendors {
 
 	/** The products. */
 	private List<Products> products;
+	@JsonIgnore
+	private Date insertedDateTime;
+	@JsonIgnore
+	private Date updatedDateTime;
+
+	public Date getInsertedDateTime() {
+		return insertedDateTime;
+	}
+
+	public void setInsertedDateTime(Date insertedDateTime) {
+		this.insertedDateTime = insertedDateTime;
+	}
+
+	public Date getUpdatedDateTime() {
+		return updatedDateTime;
+	}
+
+	public void setUpdatedDateTime(Date updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
+	}
 
 	/**
 	 * Gets the id.
@@ -189,14 +214,14 @@ public class Vendors {
 	/**
 	 * Instantiates a new vendors.
 	 *
-	 * @param id the id
-	 * @param location the location
-	 * @param vendorName the vendor name
+	 * @param id          the id
+	 * @param location    the location
+	 * @param vendorName  the vendor name
 	 * @param phoneNumber the phone number
-	 * @param emailId the email id
-	 * @param userName the user name
-	 * @param password the password
-	 * @param products the products
+	 * @param emailId     the email id
+	 * @param userName    the user name
+	 * @param password    the password
+	 * @param products    the products
 	 */
 	public Vendors(String id, Location location, String vendorName, String phoneNumber, String emailId, String userName,
 			String password, List<Products> products) {

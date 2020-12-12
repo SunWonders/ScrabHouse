@@ -3,9 +3,11 @@ package com.sunwonders.trashman.service;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
@@ -42,6 +44,9 @@ public class VendorsServiceImpl implements VendorsService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	@Autowired
+	private ModelMapper modelMapper;
+
 	/**
 	 * Save vendor.
 	 *
@@ -51,8 +56,28 @@ public class VendorsServiceImpl implements VendorsService {
 	@Override
 	public String saveVendor(Vendors vendor) {
 		// TODO Auto-generated method stub
-		saveUserForAuthentication(vendor);
-		return vendorsRepo.save(vendor).getId();
+		if ((vendor.getUserName() != null && !vendor.getUserName().isEmpty())
+				&& ((vendor.getEmailId() != null && !vendor.getEmailId().isEmpty())
+						|| (vendor.getPhoneNumber() != null && !vendor.getPhoneNumber().isEmpty()))) {
+			saveUserForAuthentication(vendor);
+
+			Vendors vendorsDbObj = vendorsRepo.findByUserName(vendor.getUserName());
+			if (vendorsDbObj != null) {
+				vendor.setId(vendorsDbObj.getId());
+				vendor.setInsertedDateTime(vendorsDbObj.getInsertedDateTime());
+				modelMapper.map(vendor, vendorsDbObj);
+				
+				vendor.setUpdatedDateTime(new Date());
+			} else {
+				vendor.setInsertedDateTime(new Date());
+			}
+			
+			return vendorsRepo.save(vendor).getId();
+		} else
+		{
+			return null;
+		}
+
 	}
 
 	/**
@@ -72,7 +97,7 @@ public class VendorsServiceImpl implements VendorsService {
 		Point p = new Point(longitude, latitude);
 		NearQuery nearQuery = NearQuery.near(p, Metrics.KILOMETERS).maxDistance(distance);
 		list.add(Aggregation.geoNear(nearQuery, "distance"));
-		list.add(Aggregation.project("id", "location"));
+		// list.add(Aggregation.project("id", "location","vendorName"));
 		TypedAggregation<Vendors> agg = newAggregation(Vendors.class, list);
 		result = mongoOperations.aggregate(agg, Vendors.class).getMappedResults();
 		return result;
@@ -133,9 +158,9 @@ public class VendorsServiceImpl implements VendorsService {
 				users.setIsVerified(true);
 				usersRepository.save(users);
 			}
-			
+
 		}
-		vendor.setUserName(null);
+
 		vendor.setPassword(null);
 	}
 
