@@ -46,23 +46,46 @@ public class Customers {
 	@JsonInclude(Include.NON_NULL)
 	private String password;
 
+	/** The inserted date time. */
 	@JsonIgnore
 	private Date insertedDateTime;
+	
+	/** The updated date time. */
 	@JsonIgnore
 	private Date updatedDateTime;
 
+	/**
+	 * Gets the inserted date time.
+	 *
+	 * @return the inserted date time
+	 */
 	public Date getInsertedDateTime() {
 		return insertedDateTime;
 	}
 
+	/**
+	 * Sets the inserted date time.
+	 *
+	 * @param insertedDateTime the new inserted date time
+	 */
 	public void setInsertedDateTime(Date insertedDateTime) {
 		this.insertedDateTime = insertedDateTime;
 	}
 
+	/**
+	 * Gets the updated date time.
+	 *
+	 * @return the updated date time
+	 */
 	public Date getUpdatedDateTime() {
 		return updatedDateTime;
 	}
 
+	/**
+	 * Sets the updated date time.
+	 *
+	 * @param updatedDateTime the new updated date time
+	 */
 	public void setUpdatedDateTime(Date updatedDateTime) {
 		this.updatedDateTime = updatedDateTime;
 	}

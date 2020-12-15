@@ -13,16 +13,37 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sunwonders.trashman.dto.LoginRequest;
 import com.sunwonders.trashman.dto.ResponseModel;
 import com.sunwonders.trashman.entities.Users;
+import com.sunwonders.trashman.repo.CustomersRepo;
 import com.sunwonders.trashman.repo.UsersRepository;
+import com.sunwonders.trashman.repo.VendorsRepo;
 import com.sunwonders.trashman.util.CommonStatusCodes;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoginController.
+ */
 @RestController
 @RequestMapping("/v1")
 public class LoginController {
 
+	/** The users repository. */
 	@Autowired
 	private UsersRepository usersRepository;
+	
+	/** The customers repo. */
+	@Autowired
+	private CustomersRepo customersRepo;
+	
+	/** The vendors repo. */
+	@Autowired
+	private VendorsRepo vendorsRepo;
 
+	/**
+	 * Save.
+	 *
+	 * @param loginRequest the login request
+	 * @return the response entity
+	 */
 	@PostMapping(path = "/login", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<ResponseModel> save(@RequestBody final LoginRequest loginRequest) {
 		ResponseModel userResponseModel = new ResponseModel();
@@ -39,13 +60,13 @@ public class LoginController {
 				if (status) {
 					if (user.getTypeOfUser() != null && user.getTypeOfUser().equals("CUSTOMER")) {
 						userResponseModel.setIsCustomer(true);
+						userResponseModel.setData(customersRepo.findByUserName(user.getUsername()));
 					}
 					if (user.getTypeOfUser() != null && user.getTypeOfUser().equals("VENDOR")) {
 						userResponseModel.setIsVendor(true);
+						userResponseModel.setData(vendorsRepo.findByUserName(user.getUsername()));
 					}
-					if (user.getTypeOfUser() != null) {
-						userResponseModel.setData(user);
-					}
+				
 					userResponseModel.setStatusMessage(CommonStatusCodes.SUCCESS_MESSAGE);
 					userResponseModel.setStatusCode(CommonStatusCodes.SUCCESS);
 					return new ResponseEntity<>(userResponseModel, HttpStatus.OK);

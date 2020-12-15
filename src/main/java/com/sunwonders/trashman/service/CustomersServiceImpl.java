@@ -28,6 +28,7 @@ public class CustomersServiceImpl implements CustomersService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	/** The model mapper. */
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -80,6 +81,12 @@ public class CustomersServiceImpl implements CustomersService {
 		customer.setPassword(null);
 	}
 
+	/**
+	 * Gets the customer by id.
+	 *
+	 * @param id the id
+	 * @return the customer by id
+	 */
 	@Override
 	public Customers getCustomerById(String id) {
 		// TODO Auto-generated method stub

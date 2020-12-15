@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document
 public class Appointments {
-	
+
 	/** The id. */
 	@Id
 	private String id;
@@ -37,6 +37,80 @@ public class Appointments {
 
 	/** The products. */
 	private List<String> products;
+
+	/** The inserted date time. */
+	private Date insertedDateTime;
+
+	/** The updated date time. */
+	private Date updatedDateTime;
+
+	/** The customer items image url. */
+	private String customerItemsImageUrl;
+	
+	/** The location. */
+	private Location pickUpLocation;
+
+	public Location getPickUpLocation() {
+		return pickUpLocation;
+	}
+
+	public void setPickUpLocation(Location pickUpLocation) {
+		this.pickUpLocation = pickUpLocation;
+	}
+
+	/**
+	 * Gets the customer items image url.
+	 *
+	 * @return the customer items image url
+	 */
+	public String getCustomerItemsImageUrl() {
+		return customerItemsImageUrl;
+	}
+
+	/**
+	 * Sets the customer items image url.
+	 *
+	 * @param customerItemsImageUrl the new customer items image url
+	 */
+	public void setCustomerItemsImageUrl(String customerItemsImageUrl) {
+		this.customerItemsImageUrl = customerItemsImageUrl;
+	}
+
+	/**
+	 * Gets the inserted date time.
+	 *
+	 * @return the inserted date time
+	 */
+	public Date getInsertedDateTime() {
+		return insertedDateTime;
+	}
+
+	/**
+	 * Sets the inserted date time.
+	 *
+	 * @param insertedDateTime the new inserted date time
+	 */
+	public void setInsertedDateTime(Date insertedDateTime) {
+		this.insertedDateTime = insertedDateTime;
+	}
+
+	/**
+	 * Gets the updated date time.
+	 *
+	 * @return the updated date time
+	 */
+	public Date getUpdatedDateTime() {
+		return updatedDateTime;
+	}
+
+	/**
+	 * Sets the updated date time.
+	 *
+	 * @param updatedDateTime the new updated date time
+	 */
+	public void setUpdatedDateTime(Date updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
+	}
 
 	/**
 	 * Gets the id.

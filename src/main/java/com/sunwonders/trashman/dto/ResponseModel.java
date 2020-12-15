@@ -19,23 +19,68 @@ public class ResponseModel {
 	@JsonInclude(Include.NON_NULL)
 	private Object data;
 	
+	/** The is vendor. */
 	@JsonInclude(Include.NON_NULL)
 	private Boolean isVendor;
+	
+	/** The is customer. */
 	@JsonInclude(Include.NON_NULL)
 	private Boolean isCustomer;
+	
+	/** The is active. */
+	@JsonInclude(Include.NON_NULL)
+	private Boolean isActive;
 
+	/**
+	 * Gets the checks if is active.
+	 *
+	 * @return the checks if is active
+	 */
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	/**
+	 * Sets the checks if is active.
+	 *
+	 * @param isActive the new checks if is active
+	 */
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	/**
+	 * Gets the checks if is vendor.
+	 *
+	 * @return the checks if is vendor
+	 */
 	public Boolean getIsVendor() {
 		return isVendor;
 	}
 
+	/**
+	 * Sets the checks if is vendor.
+	 *
+	 * @param isVendor the new checks if is vendor
+	 */
 	public void setIsVendor(Boolean isVendor) {
 		this.isVendor = isVendor;
 	}
 
+	/**
+	 * Gets the checks if is customer.
+	 *
+	 * @return the checks if is customer
+	 */
 	public Boolean getIsCustomer() {
 		return isCustomer;
 	}
 
+	/**
+	 * Sets the checks if is customer.
+	 *
+	 * @param isCustomer the new checks if is customer
+	 */
 	public void setIsCustomer(Boolean isCustomer) {
 		this.isCustomer = isCustomer;
 	}

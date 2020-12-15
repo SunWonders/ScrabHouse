@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.sunwonders.trashman</groupId>
 	<artifactId>TrashMan</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.7</version>
 	<name>TrashMan</name>
 	<description>TrashMan</description>
 

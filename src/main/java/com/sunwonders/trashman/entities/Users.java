@@ -20,32 +20,65 @@ public class Users {
 	/** The password. */
 	private String password;
 
+	/** The is enabled. */
 	private Boolean isEnabled;
 
+	/** The is verified. */
 	private Boolean isVerified;
 
+	/** The type of user. */
 	private String typeOfUser;
 
+	/**
+	 * Gets the checks if is enabled.
+	 *
+	 * @return the checks if is enabled
+	 */
 	public Boolean getIsEnabled() {
 		return isEnabled;
 	}
 
+	/**
+	 * Sets the checks if is enabled.
+	 *
+	 * @param isEnabled the new checks if is enabled
+	 */
 	public void setIsEnabled(Boolean isEnabled) {
 		this.isEnabled = isEnabled;
 	}
 
+	/**
+	 * Gets the checks if is verified.
+	 *
+	 * @return the checks if is verified
+	 */
 	public Boolean getIsVerified() {
 		return isVerified;
 	}
 
+	/**
+	 * Sets the checks if is verified.
+	 *
+	 * @param isVerified the new checks if is verified
+	 */
 	public void setIsVerified(Boolean isVerified) {
 		this.isVerified = isVerified;
 	}
 
+	/**
+	 * Gets the type of user.
+	 *
+	 * @return the type of user
+	 */
 	public String getTypeOfUser() {
 		return typeOfUser;
 	}
 
+	/**
+	 * Sets the type of user.
+	 *
+	 * @param typeOfUser the new type of user
+	 */
 	public void setTypeOfUser(String typeOfUser) {
 		this.typeOfUser = typeOfUser;
 	}

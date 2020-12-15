@@ -44,6 +44,7 @@ public class VendorsServiceImpl implements VendorsService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	/** The model mapper. */
 	@Autowired
 	private ModelMapper modelMapper;
 
