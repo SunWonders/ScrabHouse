@@ -33,6 +33,27 @@ public class AppVersion {
 	/** The updated date time. */
 	private Date updatedDateTime;
 
+	/** The vendor id. */
+	private String vendorId;
+
+	/**
+	 * Gets the vendor id.
+	 *
+	 * @return the vendor id
+	 */
+	public String getVendorId() {
+		return vendorId;
+	}
+
+	/**
+	 * Sets the vendor id.
+	 *
+	 * @param vendorId the new vendor id
+	 */
+	public void setVendorId(String vendorId) {
+		this.vendorId = vendorId;
+	}
+
 	/**
 	 * Gets the inserted date time.
 	 *

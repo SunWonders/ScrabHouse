@@ -50,10 +50,20 @@ public class Appointments {
 	/** The location. */
 	private Location pickUpLocation;
 
+	/**
+	 * Gets the pick up location.
+	 *
+	 * @return the pick up location
+	 */
 	public Location getPickUpLocation() {
 		return pickUpLocation;
 	}
 
+	/**
+	 * Sets the pick up location.
+	 *
+	 * @param pickUpLocation the new pick up location
+	 */
 	public void setPickUpLocation(Location pickUpLocation) {
 		this.pickUpLocation = pickUpLocation;
 	}

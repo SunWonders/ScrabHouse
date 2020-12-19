@@ -5,7 +5,7 @@ package com.sunwonders.trashman.dto;
  * The Class VersionCheckRequest.
  */
 public class VersionCheckRequest {
-	
+
 	/** The version. */
 	private String version;
 
@@ -14,6 +14,27 @@ public class VersionCheckRequest {
 
 	/** The application. */
 	private String application;
+
+	/** The vendor id. */
+	private String vendorId;
+
+	/**
+	 * Gets the vendor id.
+	 *
+	 * @return the vendor id
+	 */
+	public String getVendorId() {
+		return vendorId;
+	}
+
+	/**
+	 * Sets the vendor id.
+	 *
+	 * @param vendorId the new vendor id
+	 */
+	public void setVendorId(String vendorId) {
+		this.vendorId = vendorId;
+	}
 
 	/**
 	 * Gets the version.
@@ -32,8 +53,6 @@ public class VersionCheckRequest {
 	public void setVersion(String version) {
 		this.version = version;
 	}
-
-	
 
 	/**
 	 * Gets the type of app.

@@ -3,6 +3,7 @@
  */
 package com.sunwonders.trashman.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,8 +37,21 @@ public class VersionCheckServiceImpl implements VersionCheckService {
 	public Boolean checkAppVersionIsActive(VersionCheckRequest versionCheckRequest) {
 		// TODO Auto-generated method stub
 		Boolean isActive = false;
-		List<AppVersion> appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(
-				versionCheckRequest.getVersion(), versionCheckRequest.getTypeOfApp(), versionCheckRequest.getApplication());
+//		List<AppVersion> appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(
+//				versionCheckRequest.getVersion(), versionCheckRequest.getTypeOfApp(),
+//				versionCheckRequest.getApplication());
+
+		List<AppVersion> appVersions = new ArrayList<>();
+
+		if (versionCheckRequest.getVendorId() != null) {
+			appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplicationAndVendorId(
+					versionCheckRequest.getVersion(), versionCheckRequest.getTypeOfApp(),
+					versionCheckRequest.getApplication(), versionCheckRequest.getVendorId());
+		} else {
+			appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(versionCheckRequest.getVersion(),
+					versionCheckRequest.getTypeOfApp(), versionCheckRequest.getApplication());
+		}
+
 		if (!appVersions.isEmpty()) {
 			isActive = appVersions.get(0).getIsActive();
 		}
@@ -53,8 +67,15 @@ public class VersionCheckServiceImpl implements VersionCheckService {
 	@Override
 	public String save(AppVersion appVersion) {
 		// TODO Auto-generated method stub
-		List<AppVersion> appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(appVersion.getVersion(),
-				appVersion.getTypeOfApp(), appVersion.getApplication());
+		List<AppVersion> appVersions = new ArrayList<>();
+		if (appVersion.getVendorId() != null) {
+			appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplicationAndVendorId(appVersion.getVersion(),
+					appVersion.getTypeOfApp(), appVersion.getApplication(), appVersion.getVendorId());
+		} else {
+			appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(appVersion.getVersion(),
+					appVersion.getTypeOfApp(), appVersion.getApplication());
+		}
+
 		if (appVersion.getId() != null && !appVersion.getId().isEmpty()) {
 			appVersion.setInsertedDateTime(new Date());
 		}
@@ -73,9 +94,18 @@ public class VersionCheckServiceImpl implements VersionCheckService {
 	 */
 	@Override
 	public String updateAppStatus(AppVersion appVersion) {
-		// TODO Auto-generated method stub
-		List<AppVersion> appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(appVersion.getVersion(),
-				appVersion.getTypeOfApp(), appVersion.getApplication());
+		List<AppVersion> appVersions = new ArrayList<>();
+
+		if (appVersion.getVendorId() != null) {
+			appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplicationAndVendorId(appVersion.getVersion(),
+					appVersion.getTypeOfApp(), appVersion.getApplication(), appVersion.getVendorId());
+		} else {
+			appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(appVersion.getVersion(),
+					appVersion.getTypeOfApp(), appVersion.getApplication());
+		}
+
+//		appVersions = versionCheckRepo.findByVersionAndTypeOfAppAndApplication(appVersion.getVersion(),
+//				appVersion.getTypeOfApp(), appVersion.getApplication());
 		if (!appVersions.isEmpty()) {
 			AppVersion appVersionFromDb = appVersions.get(0);
 			appVersionFromDb.setIsActive(appVersion.getIsActive());
