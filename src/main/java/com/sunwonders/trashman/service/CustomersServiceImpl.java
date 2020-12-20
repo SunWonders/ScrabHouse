@@ -74,6 +74,7 @@ public class CustomersServiceImpl implements CustomersService {
 				users.setIsEnabled(true);
 				users.setTypeOfUser("CUSTOMER");
 				users.setIsVerified(true);
+				users.setInsertedDateTime(new Date());
 				usersRepository.save(users);
 			}
 		}

@@ -46,9 +46,135 @@ public class Appointments {
 
 	/** The customer items image url. */
 	private String customerItemsImageUrl;
-	
+
 	/** The location. */
 	private Location pickUpLocation;
+
+	/** The customer phone number. */
+	private String customerPhoneNumber;
+
+	/** The customer name. */
+	private String customerName;
+
+	/** The customer email id. */
+	private String customerEmailId;
+
+	/** The vendor phone number. */
+	private String vendorPhoneNumber;
+
+	/** The vendor name. */
+	private String vendorName;
+
+	/** The vendor email id. */
+	private String vendorEmailId;
+
+	/**
+	 * Gets the customer phone number.
+	 *
+	 * @return the customer phone number
+	 */
+	public String getCustomerPhoneNumber() {
+		return customerPhoneNumber;
+	}
+
+	/**
+	 * Sets the customer phone number.
+	 *
+	 * @param customerPhoneNumber the new customer phone number
+	 */
+	public void setCustomerPhoneNumber(String customerPhoneNumber) {
+		this.customerPhoneNumber = customerPhoneNumber;
+	}
+
+	/**
+	 * Gets the customer name.
+	 *
+	 * @return the customer name
+	 */
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	/**
+	 * Sets the customer name.
+	 *
+	 * @param customerName the new customer name
+	 */
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	/**
+	 * Gets the customer email id.
+	 *
+	 * @return the customer email id
+	 */
+	public String getCustomerEmailId() {
+		return customerEmailId;
+	}
+
+	/**
+	 * Sets the customer email id.
+	 *
+	 * @param customerEmailId the new customer email id
+	 */
+	public void setCustomerEmailId(String customerEmailId) {
+		this.customerEmailId = customerEmailId;
+	}
+
+	/**
+	 * Gets the vendor phone number.
+	 *
+	 * @return the vendor phone number
+	 */
+	public String getVendorPhoneNumber() {
+		return vendorPhoneNumber;
+	}
+
+	/**
+	 * Sets the vendor phone number.
+	 *
+	 * @param vendorPhoneNumber the new vendor phone number
+	 */
+	public void setVendorPhoneNumber(String vendorPhoneNumber) {
+		this.vendorPhoneNumber = vendorPhoneNumber;
+	}
+
+	/**
+	 * Gets the vendor name.
+	 *
+	 * @return the vendor name
+	 */
+	public String getVendorName() {
+		return vendorName;
+	}
+
+	/**
+	 * Sets the vendor name.
+	 *
+	 * @param vendorName the new vendor name
+	 */
+	public void setVendorName(String vendorName) {
+		this.vendorName = vendorName;
+	}
+
+	/**
+	 * Gets the vendor email id.
+	 *
+	 * @return the vendor email id
+	 */
+	public String getVendorEmailId() {
+		return vendorEmailId;
+	}
+
+	/**
+	 * Sets the vendor email id.
+	 *
+	 * @param vendorEmailId the new vendor email id
+	 */
+	public void setVendorEmailId(String vendorEmailId) {
+		this.vendorEmailId = vendorEmailId;
+	}
 
 	/**
 	 * Gets the pick up location.

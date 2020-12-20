@@ -157,6 +157,7 @@ public class VendorsServiceImpl implements VendorsService {
 				users.setIsEnabled(true);
 				users.setTypeOfUser("VENDOR");
 				users.setIsVerified(true);
+				users.setInsertedDateTime(new Date());
 				usersRepository.save(users);
 			}
 

@@ -1,5 +1,7 @@
 package com.sunwonders.trashman.entities;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,6 +30,50 @@ public class Users {
 
 	/** The type of user. */
 	private String typeOfUser;
+
+	/** The inserted date time. */
+	private Date insertedDateTime;
+
+	/** The updated date time. */
+	private Date updatedDateTime;
+	
+	
+
+	/**
+	 * Gets the inserted date time.
+	 *
+	 * @return the inserted date time
+	 */
+	public Date getInsertedDateTime() {
+		return insertedDateTime;
+	}
+
+	/**
+	 * Sets the inserted date time.
+	 *
+	 * @param insertedDateTime the new inserted date time
+	 */
+	public void setInsertedDateTime(Date insertedDateTime) {
+		this.insertedDateTime = insertedDateTime;
+	}
+
+	/**
+	 * Gets the updated date time.
+	 *
+	 * @return the updated date time
+	 */
+	public Date getUpdatedDateTime() {
+		return updatedDateTime;
+	}
+
+	/**
+	 * Sets the updated date time.
+	 *
+	 * @param updatedDateTime the new updated date time
+	 */
+	public void setUpdatedDateTime(Date updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
+	}
 
 	/**
 	 * Gets the checks if is enabled.
