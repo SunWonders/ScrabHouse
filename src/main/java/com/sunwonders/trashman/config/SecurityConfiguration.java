@@ -32,9 +32,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		String[] resources = new String[] { "/", "/index.html", "/assets/**" ,"/v1/login"};
 
-		http.csrf().disable().authorizeRequests().antMatchers("/v1/login").permitAll().anyRequest().authenticated()
-				.and().logout().logoutUrl("/v1/logout").and().httpBasic().and().sessionManagement().disable();
+		http.csrf().disable().authorizeRequests().antMatchers(resources).permitAll().anyRequest()
+				.authenticated().and().logout().logoutUrl("/v1/logout").and().httpBasic().and().sessionManagement()
+				.disable();
 	}
 
 	/**

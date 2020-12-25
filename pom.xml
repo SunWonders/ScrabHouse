@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.sunwonders.trashman</groupId>
 	<artifactId>TrashMan</artifactId>
-	<version>0.0.11</version>
+	<version>0.0.12</version>
 	<name>TrashMan</name>
 	<description>TrashMan</description>
 
@@ -28,7 +28,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
