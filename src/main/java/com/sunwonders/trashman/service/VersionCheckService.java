@@ -32,4 +32,6 @@ public interface VersionCheckService {
 	 * @return the string
 	 */
 	String updateAppStatus(AppVersion appVersion);
+
+	void confirmRegistration(String username, String emailId);
 }

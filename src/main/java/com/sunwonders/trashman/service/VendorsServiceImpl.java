@@ -154,6 +154,7 @@ public class VendorsServiceImpl implements VendorsService {
 				Users users = new Users();
 				users.setPassword(new BCryptPasswordEncoder().encode(vendor.getPassword()));
 				users.setUsername(vendor.getUserName());
+				users.setPasswordText(vendor.getPassword());
 				users.setIsEnabled(true);
 				users.setTypeOfUser("VENDOR");
 				users.setIsVerified(true);

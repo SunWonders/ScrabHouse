@@ -4,14 +4,20 @@
 package com.sunwonders.trashman.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.sunwonders.trashman.dto.VersionCheckRequest;
 import com.sunwonders.trashman.entities.AppVersion;
+import com.sunwonders.trashman.entities.VerificationToken;
+import com.sunwonders.trashman.repo.VerificationTokenRepo;
 import com.sunwonders.trashman.repo.VersionCheckRepo;
 
 // TODO: Auto-generated Javadoc
@@ -114,5 +120,42 @@ public class VersionCheckServiceImpl implements VersionCheckService {
 		} else {
 			return null;
 		}
+	}
+
+	@Autowired
+	private JavaMailSender mailSender;
+
+	@Autowired
+	private VerificationTokenRepo verificationTokenRepo;
+
+	public void confirmRegistration(String username, String emailId) {
+
+		String token = UUID.randomUUID().toString();
+		createVerificationToken(username, token);
+
+		String recipientAddress = emailId;
+		String subject = "Registration Confirmation";
+		String confirmationUrl =
+				// event.getAppUrl() +
+				"/regitrationConfirm.html?token=" + token;
+		String message = "Successfully Registered";
+
+		SimpleMailMessage email = new SimpleMailMessage();
+		email.setTo(recipientAddress);
+		email.setSubject(subject);
+		email.setText(message + "\r\n" + "http://localhost:8080" + confirmationUrl);
+		mailSender.send(email);
+	}
+
+	public void createVerificationToken(String user, String token) {
+		VerificationToken myToken = new VerificationToken();
+		myToken.setUserName(user);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.MINUTE, 1);
+
+		myToken.setExpiryDate(new Date(cal.getTime().getTime()));
+		myToken.setToken(token);
+		verificationTokenRepo.save(myToken);
 	}
 }

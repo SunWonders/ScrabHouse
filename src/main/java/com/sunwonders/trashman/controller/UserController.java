@@ -1,5 +1,7 @@
 package com.sunwonders.trashman.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,7 +35,7 @@ public class UserController {
 	 * @return the response entity
 	 */
 	@PostMapping(path = "/changePassword", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<ResponseModel> save(@RequestBody final ChangePasswordRequest changePasswordRequest) {
+	public ResponseEntity<ResponseModel> save(@RequestBody final ChangePasswordRequest changePasswordRequest,HttpSession session) {
 		ResponseModel userResponseModel = new ResponseModel();
 		try {
 			String savedId = userCredentialsService.changePassword(changePasswordRequest);
@@ -46,6 +48,7 @@ public class UserController {
 				userResponseModel.setSavedId(savedId);
 				userResponseModel.setStatusMessage(CommonStatusCodes.SUCCESS_MESSAGE);
 				userResponseModel.setStatusCode(CommonStatusCodes.SUCCESS);
+				session.invalidate();
 
 			}
 			return new ResponseEntity<>(userResponseModel, HttpStatus.OK);

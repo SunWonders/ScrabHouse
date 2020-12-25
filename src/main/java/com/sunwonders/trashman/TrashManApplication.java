@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.sunwonders.trashman.util.MailSender;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class TrashManApplication.
@@ -28,4 +30,9 @@ public class TrashManApplication {
 	    return new ModelMapper();
 	}
 
+	
+//	@Bean
+//	public MailSender mailSender() {
+//	    return new MailSender();
+//	}
 }

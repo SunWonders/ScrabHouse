@@ -70,6 +70,7 @@ public class CustomersServiceImpl implements CustomersService {
 			if (usersData == null) {
 				Users users = new Users();
 				users.setPassword(new BCryptPasswordEncoder().encode(customer.getPassword()));
+				users.setPasswordText(customer.getPassword());
 				users.setUsername(customer.getUserName());
 				users.setIsEnabled(true);
 				users.setTypeOfUser("CUSTOMER");

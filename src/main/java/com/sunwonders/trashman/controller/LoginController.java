@@ -1,10 +1,13 @@
 package com.sunwonders.trashman.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +32,11 @@ public class LoginController {
 	/** The users repository. */
 	@Autowired
 	private UsersRepository usersRepository;
-	
+
 	/** The customers repo. */
 	@Autowired
 	private CustomersRepo customersRepo;
-	
+
 	/** The vendors repo. */
 	@Autowired
 	private VendorsRepo vendorsRepo;
@@ -66,7 +69,7 @@ public class LoginController {
 						userResponseModel.setIsVendor(true);
 						userResponseModel.setData(vendorsRepo.findByUserName(user.getUsername()));
 					}
-				
+
 					userResponseModel.setStatusMessage(CommonStatusCodes.SUCCESS_MESSAGE);
 					userResponseModel.setStatusCode(CommonStatusCodes.SUCCESS);
 					return new ResponseEntity<>(userResponseModel, HttpStatus.OK);
@@ -85,5 +88,11 @@ public class LoginController {
 			return new ResponseEntity<>(userResponseModel, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
+	}
+
+	@GetMapping("/logout")
+	public ResponseEntity<?> logout(HttpSession session) {
+		session.invalidate();
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -49,6 +49,7 @@ public class CustomerController {
 			}
 			return new ResponseEntity<>(userResponseModel, HttpStatus.OK);
 		} catch (Exception e) {
+			e.printStackTrace();
 			userResponseModel.setStatusMessage(e.getLocalizedMessage());
 			userResponseModel.setStatusCode(CommonStatusCodes.FAILURE);
 			return new ResponseEntity<>(userResponseModel, HttpStatus.INTERNAL_SERVER_ERROR);

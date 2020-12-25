@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.sunwonders.trashman</groupId>
 	<artifactId>TrashMan</artifactId>
-	<version>0.0.9</version>
+	<version>0.0.11</version>
 	<name>TrashMan</name>
 	<description>TrashMan</description>
 
@@ -54,6 +54,17 @@
 			<artifactId>modelmapper</artifactId>
 			<version>2.3.5</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+
+		</dependency>
+
+
+
+
 	</dependencies>
 
 	<build>
