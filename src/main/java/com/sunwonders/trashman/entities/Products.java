@@ -25,6 +25,30 @@ public class Products {
 
 	/** The amount. */
 	private Float amount;
+	
+	/** The start range. */
+	private Integer startRange;
+	
+	/** The end range. */
+	private Integer endRange;
+	
+	
+
+	public Integer getStartRange() {
+		return startRange;
+	}
+
+	public void setStartRange(Integer startRange) {
+		this.startRange = startRange;
+	}
+
+	public Integer getEndRange() {
+		return endRange;
+	}
+
+	public void setEndRange(Integer endRange) {
+		this.endRange = endRange;
+	}
 
 	/**
 	 * Gets the type of unit.
