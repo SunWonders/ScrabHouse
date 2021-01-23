@@ -25,29 +25,50 @@ public class Products {
 
 	/** The amount. */
 	private Float amount;
-	
+
 	/** The start range. */
-	private Integer startRange;
-	
+	private Float startRange;
+
 	/** The end range. */
-	private Integer endRange;
-	
+	private Float endRange;
+
+	/** The price type. */
+	private String priceType;
+
 	
 
-	public Integer getStartRange() {
+	public Float getStartRange() {
 		return startRange;
 	}
 
-	public void setStartRange(Integer startRange) {
+	public void setStartRange(Float startRange) {
 		this.startRange = startRange;
 	}
 
-	public Integer getEndRange() {
+	public Float getEndRange() {
 		return endRange;
 	}
 
-	public void setEndRange(Integer endRange) {
+	public void setEndRange(Float endRange) {
 		this.endRange = endRange;
+	}
+
+	/**
+	 * Gets the price type.
+	 *
+	 * @return the price type
+	 */
+	public String getPriceType() {
+		return priceType;
+	}
+
+	/**
+	 * Sets the price type.
+	 *
+	 * @param priceType the new price type
+	 */
+	public void setPriceType(String priceType) {
+		this.priceType = priceType;
 	}
 
 	/**
@@ -143,9 +164,9 @@ public class Products {
 	/**
 	 * Instantiates a new products.
 	 *
-	 * @param id the id
+	 * @param id          the id
 	 * @param productName the product name
-	 * @param productUrl the product url
+	 * @param productUrl  the product url
 	 */
 	public Products(String id, String productName, String productUrl) {
 		super();
