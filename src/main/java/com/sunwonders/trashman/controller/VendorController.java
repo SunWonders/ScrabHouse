@@ -92,7 +92,7 @@ public class VendorController {
 		try {
 			result = vendorsService.getVendorsByLocation(longitude, latitude, distance);
 			if (result.isEmpty()) {
-				userResponseModel.setStatusMessage(CommonStatusCodes.SUCCESS_NO_DATA_MESSAGE);
+				userResponseModel.setStatusMessage("No Buyers are available");
 				userResponseModel.setStatusCode(CommonStatusCodes.SUCCESS_NO_DATA);
 			} else {
 				userResponseModel.setStatusMessage(CommonStatusCodes.SUCCESS_MESSAGE);

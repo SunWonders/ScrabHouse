@@ -95,7 +95,7 @@ public class VendorsServiceImpl implements VendorsService {
 		List<Vendors> result = null;
 		List<AggregationOperation> list = new ArrayList<AggregationOperation>();
 
-		Point p = new Point(longitude, latitude);
+		Point p = new Point(latitude, longitude);
 		NearQuery nearQuery = NearQuery.near(p, Metrics.KILOMETERS).maxDistance(distance);
 		list.add(Aggregation.geoNear(nearQuery, "distance"));
 		// list.add(Aggregation.project("id", "location","vendorName"));
