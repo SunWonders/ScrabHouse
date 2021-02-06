@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sunwonders.trashman</groupId>
-	<artifactId>TrashMan</artifactId>
+	<artifactId>ScrabHouse</artifactId>
 	<version>0.0.12</version>
 	<name>TrashMan</name>
-	<description>TrashMan</description>
+	<description>ScrabHouse</description>
 <packaging>war</packaging>
 	<properties>
 		<java.version>1.8</java.version>
