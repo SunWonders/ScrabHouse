@@ -38,19 +38,19 @@ public class CommonStatusCodes {
 
 	/** The appointment booked by customer. */
 	public static String APPOINTMENT_BOOKED_BY_CUSTOMER = "APPOINTMENT_BOOKED_BY_CUSTOMER";
-	
+
 	/** The appointment cancelled by customer. */
 	public static String APPOINTMENT_CANCELLED_BY_CUSTOMER = "APPOINTMENT_CANCELLED_BY_CUSTOMER";
-	
+
 	/** The appointment booked by vendor. */
 	public static String APPOINTMENT_BOOKED_BY_VENDOR = "APPOINTMENT_BOOKED_BY_VENDOR";
-	
+
 	/** The appointment cancelled by vendor. */
 	public static String APPOINTMENT_CANCELLED_BY_VENDOR = "APPOINTMENT_CANCELLED_BY_VENDOR";
 
 	/** The appointment approved by vendor. */
 	public static String APPOINTMENT_APPROVED_BY_VENDOR = "APPOINTMENT_APPROVED_BY_VENDOR";
-	
+
 	/** The appointment rejected by vendor. */
 	public static String APPOINTMENT_REJECTED_BY_VENDOR = "APPOINTMENT_REJECTED_BY_VENDOR";
 
@@ -59,8 +59,10 @@ public class CommonStatusCodes {
 
 	/** The customer type of app. */
 	public static String CUSTOMER_TYPE_OF_APP = "CUSTOMER";
-	
+
 	/** The vendor type of app. */
 	public static String VENDOR_TYPE_OF_APP = "VENDOR";
+
+	public static String APPOINTMENT_CLOSED_BY_VENDOR = "APPOINTMENT_CLOSED_BY_VENDOR";
 
 }

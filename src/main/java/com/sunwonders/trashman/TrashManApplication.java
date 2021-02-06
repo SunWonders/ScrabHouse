@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 // TODO: Auto-generated Javadoc
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootApplication
 @EnableAutoConfiguration
-public class TrashManApplication {
+public class TrashManApplication extends SpringBootServletInitializer{
 
 	/**
 	 * The main method.

@@ -55,6 +55,7 @@ public class VerificationToken {
 		return EXPIRATION;
 	}
 
+	@SuppressWarnings("unused")
 	private Date calculateExpiryDate(int expiryTimeInMinutes) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
